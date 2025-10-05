@@ -1,0 +1,26 @@
+JUSTIFICACION
+
+El sistema de reservas de hotel es un problema real muy común en el sector turístico.
+Muchos hoteles pequeños no cuentan con una aplicación eficiente para gestionar sus reservas,
+por lo que se presentan errores de sobreventa,
+mala organización de disponibilidad o registros incompletos.
+Este proyecto busca modelar un sistema básico de reservas aplicando los principios enseñados
+
+EXPLICACION DE CONCEPTOS
+
+Un Hotel tiene muchas Habitacion (composición).
+
+Un Cliente puede tener muchas Reserva (agregación).
+
+Una Reserva depende de una Habitacion y de un Cliente (dependencia).
+
+REFLEXION
+
+Durante el desarrollo del proyecto del sistema de reservas de habitaciones de hotel,
+pude aplicar de manera práctica los principios fundamentales de la Programación Orientada a Objetos.
+Este proyecto me permitió comprender cómo representar un problema del mundo real mediante clases,
+objetos y relaciones entre ellos.
+Aprendí que la abstracción ayuda a enfocarse solo en los datos importantes de cada entidad
+(como cliente, habitación o reserva), mientras que el encapsulamiento protege la información y mantiene el control del acceso a los datos.
+Uno de los mayores retos fue entender y aplicar correctamente las relaciones entre clases. Diferenciar entre dependencia,
+agregación y composición me ayudó a representar con precisión cómo las entidades del sistema se conectan
