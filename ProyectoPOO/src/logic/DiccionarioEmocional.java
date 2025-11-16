@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiccionarioEmocional {
-    private List<PalabraEmocional> listaPalabras;
+    private final List<PalabraEmocional> listaPalabras;
 
     public DiccionarioEmocional() {
         this.listaPalabras = new ArrayList<>();
@@ -24,6 +24,7 @@ public class DiccionarioEmocional {
     }
 
     public PalabraEmocional buscarPalabra(String palabra) {
+        if (palabra == null) return null;
         for (PalabraEmocional p : listaPalabras) {
             if (p.getPalabra().equalsIgnoreCase(palabra)) return p;
         }
@@ -32,5 +33,9 @@ public class DiccionarioEmocional {
 
     public List<PalabraEmocional> listarPalabras() {
         return new ArrayList<>(listaPalabras);
+    }
+
+    public List<PalabraEmocional> getListaPalabras() {
+        return listarPalabras();
     }
 }

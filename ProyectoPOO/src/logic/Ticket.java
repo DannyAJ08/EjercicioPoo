@@ -36,7 +36,6 @@ public class Ticket {
     public Departamento getDepartamento() { return departamento; }
     public void setDepartamento(Departamento departamento) { this.departamento = departamento; }
 
-
     public String toString() {
         return "Ticket{" +
                 "id=" + id +
@@ -46,5 +45,16 @@ public class Ticket {
                 ", usuario=" + (usuario != null ? usuario.getCorreo() : "null") +
                 ", departamento=" + (departamento != null ? departamento.getNombre() : "null") +
                 '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ticket)) return false;
+        Ticket ticket = (Ticket) o;
+        return id == ticket.id;
+    }
+
+    public int hashCode() {
+        return Integer.hashCode(id);
     }
 }

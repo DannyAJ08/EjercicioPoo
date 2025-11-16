@@ -18,4 +18,15 @@ public class PalabraEmocional {
     public String toString() {
         return palabra + " -> " + emocion;
     }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PalabraEmocional)) return false;
+        PalabraEmocional that = (PalabraEmocional) o;
+        return palabra != null && palabra.equalsIgnoreCase(that.palabra);
+    }
+
+    public int hashCode() {
+        return palabra == null ? 0 : palabra.toLowerCase().hashCode();
+    }
 }

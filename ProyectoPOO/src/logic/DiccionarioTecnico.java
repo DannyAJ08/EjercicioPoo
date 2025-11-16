@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiccionarioTecnico {
-    private List<PalabraTecnica> listaPalabras;
+    private final List<PalabraTecnica> listaPalabras;
 
     public DiccionarioTecnico() {
         this.listaPalabras = new ArrayList<>();
@@ -24,6 +24,7 @@ public class DiccionarioTecnico {
     }
 
     public PalabraTecnica buscarPalabra(String palabra) {
+        if (palabra == null) return null;
         for (PalabraTecnica p : listaPalabras) {
             if (p.getPalabra().equalsIgnoreCase(palabra)) return p;
         }
@@ -32,5 +33,9 @@ public class DiccionarioTecnico {
 
     public List<PalabraTecnica> listarPalabras() {
         return new ArrayList<>(listaPalabras);
+    }
+
+    public List<PalabraTecnica> getListaPalabras() {
+        return listarPalabras();
     }
 }

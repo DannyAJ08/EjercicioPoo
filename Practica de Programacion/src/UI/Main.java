@@ -75,7 +75,7 @@ public class Main {
             }
         }
 
-        
+
         System.out.println("\nBuscar cliente C002: " + admin.buscarCliente("C002"));
     }
 }
