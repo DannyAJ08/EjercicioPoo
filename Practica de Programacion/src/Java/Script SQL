@@ -1,0 +1,34 @@
+
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombreCompleto VARCHAR(100) NOT NULL,
+    cedula VARCHAR(20) NOT NULL,
+    sexo VARCHAR(10),
+    correoElectronico VARCHAR(100) NOT NULL UNIQUE,
+    profesion VARCHAR(100),
+    direccion VARCHAR(200),
+    contrasenia VARCHAR(100) NOT NULL,
+    tipo VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE cuentas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idCliente INT NOT NULL,
+    tipoCuenta VARCHAR(20) NOT NULL,
+    saldo DOUBLE NOT NULL,
+    porcentajeInteres DOUBLE,
+    limiteCredito DOUBLE,
+    tipoTarjeta VARCHAR(50),
+    activa TINYINT NOT NULL,
+    FOREIGN KEY(idCliente) REFERENCES usuarios(id)
+);
+
+CREATE TABLE transacciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idCuenta INT NOT NULL,
+    tipo VARCHAR(20) NOT NULL,
+    monto DOUBLE NOT NULL,
+    fecha DATETIME NOT NULL,
+    FOREIGN KEY(idCuenta) REFERENCES cuentas(id)
+);
