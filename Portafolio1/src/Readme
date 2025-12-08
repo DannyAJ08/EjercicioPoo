@@ -8,11 +8,11 @@ Este proyecto busca modelar un sistema básico de reservas aplicando los princip
 
 EXPLICACION DE CONCEPTOS
 
-Un Hotel tiene muchas Habitacion (composición).
+Un model.Hotel tiene muchas model.Habitacion (composición).
 
-Un Cliente puede tener muchas Reserva (agregación).
+Un model.Cliente puede tener muchas model.Reserva (agregación).
 
-Una Reserva depende de una Habitacion y de un Cliente (dependencia).
+Una model.Reserva depende de una model.Habitacion y de un model.Cliente (dependencia).
 
 REFLEXION
 
