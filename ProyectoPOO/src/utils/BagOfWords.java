@@ -1,4 +1,4 @@
-package logic;
+package utils;
 
 import java.text.Normalizer;
 import java.util.*;
@@ -40,66 +40,6 @@ public class BagOfWords {
         Map<String, Integer> tf = new HashMap<>();
         for (String t : tokens) tf.put(t, tf.getOrDefault(t, 0) + 1);
         return tf;
-    }
-
-    public static AnalysisResult analyzeEmotion(String text, DiccionarioEmocional dicEmocional) {
-        List<String> tokens = tokenizeAndFilter(text);
-        Map<String, Integer> tf = termFrequency(tokens);
-
-        Map<String, Integer> emocionPuntuaciones = new HashMap<>();
-        Map<String, List<String>> emocionDetonantes = new HashMap<>();
-
-        for (PalabraEmocional pe : dicEmocional.getListaPalabras()) {
-            String palabra = normalize(pe.getPalabra());
-            if (tf.containsKey(palabra)) {
-                String emocion = pe.getEmocion();
-                int count = tf.get(palabra);
-                emocionPuntuaciones.put(emocion, emocionPuntuaciones.getOrDefault(emocion, 0) + count);
-
-                emocionDetonantes.computeIfAbsent(emocion, k -> new ArrayList<>());
-                for (int i = 0; i < count; i++) {
-                    emocionDetonantes.get(emocion).add(palabra);
-                }
-            }
-        }
-
-        List<Map.Entry<String,Integer>> sorted = new ArrayList<>(emocionPuntuaciones.entrySet());
-        sorted.sort((a,b) -> Integer.compare(b.getValue(), a.getValue()));
-
-        List<String> emocionesOrdenadas = new ArrayList<>();
-        for (Map.Entry<String,Integer> e : sorted) emocionesOrdenadas.add(e.getKey());
-
-        return new AnalysisResult(emocionesOrdenadas, emocionDetonantes);
-    }
-
-    public static TechnicalResult analyzeTechnical(String text, DiccionarioTecnico dicTecnico) {
-        List<String> tokens = tokenizeAndFilter(text);
-        Map<String, Integer> tf = termFrequency(tokens);
-
-        Map<String, Integer> categoriaPuntuaciones = new HashMap<>();
-        Map<String, List<String>> categoriaDetonantes = new HashMap<>();
-
-        for (PalabraTecnica pt : dicTecnico.getListaPalabras()) {
-            String palabra = normalize(pt.getPalabra());
-            if (tf.containsKey(palabra)) {
-                String categoria = pt.getCategoria();
-                int count = tf.get(palabra);
-                categoriaPuntuaciones.put(categoria, categoriaPuntuaciones.getOrDefault(categoria, 0) + count);
-
-                categoriaDetonantes.computeIfAbsent(categoria, k -> new ArrayList<>());
-                for (int i = 0; i < count; i++) {
-                    categoriaDetonantes.get(categoria).add(palabra);
-                }
-            }
-        }
-
-        List<Map.Entry<String,Integer>> sorted = new ArrayList<>(categoriaPuntuaciones.entrySet());
-        sorted.sort((a,b) -> Integer.compare(b.getValue(), a.getValue()));
-
-        List<String> categoriasOrdenadas = new ArrayList<>();
-        for (Map.Entry<String,Integer> e : sorted) categoriasOrdenadas.add(e.getKey());
-
-        return new TechnicalResult(categoriasOrdenadas, categoriaPuntuaciones, categoriaDetonantes);
     }
 
     public static class AnalysisResult {
